@@ -3,3 +3,4 @@ requests
 pandas
 schedule
 ta
+beautifulsoup4
