@@ -1,29 +1,20 @@
-import os
-import requests
-from news_service import get_mock_news
+from news_service import get_high_impact_news
+from telegram_service import send_message
 
-TOKEN = os.getenv("TELEGRAM_TOKEN")
-CHAT_ID = os.getenv("CHAT_ID")
+events = get_high_impact_news()
 
-news = get_mock_news()
+for event in events:
 
-message = f"""
+    message = f"""
 🔴 HIGH IMPACT ALERT
 
-{news['country']} {news['event']}
-🕒 {news['time']}
+{event['country']} {event['event']}
+
+🕒 {event['time']}
 
 ⚠️ High volatility expected on XAU/USD.
 """
 
-url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
+    send_message(message)
 
-requests.post(
-    url,
-    data={
-        "chat_id": CHAT_ID,
-        "text": message
-    }
-)
-
-print("Message sent!")
+print("Done")
