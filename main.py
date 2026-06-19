@@ -1,23 +1,19 @@
 import os
 import requests
+from news_service import get_mock_news
 
 TOKEN = os.getenv("TELEGRAM_TOKEN")
 CHAT_ID = os.getenv("CHAT_ID")
 
-message = """
-🔥 GOLD GUARDIAN ONLINE 🔥
+news = get_mock_news()
 
-Hello bro 😎
+message = f"""
+🔴 HIGH IMPACT ALERT
 
-Your Gold Guardian AI is now running on GitHub Actions.
+{news['country']} {news['event']}
+🕒 {news['time']}
 
-Next upgrades:
-🔴 High-impact news alerts
-📈 XAUUSD technical alerts
-🤖 AI analysis
-📅 Daily summaries
-
-Stay tuned 🚀
+⚠️ High volatility expected on XAU/USD.
 """
 
 url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
@@ -30,4 +26,4 @@ requests.post(
     }
 )
 
-print("Telegram message sent successfully!")
+print("Message sent!")
