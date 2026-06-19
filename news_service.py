@@ -1,10 +1,16 @@
-import requests
-from bs4 import BeautifulSoup
+def get_high_impact_news():
 
-def get_mock_news():
-    return {
-        "event": "Core CPI m/m",
-        "country": "🇺🇸",
-        "impact": "🔴 High",
-        "time": "20:30 MYT"
-    }
+    return [
+        {
+            "country": "🇺🇸",
+            "event": "Core CPI m/m",
+            "time": "20:30 MYT"
+        },
+
+        {
+            "country": "🇺🇸",
+            "event": "FOMC Statement",
+            "time": "02:00 MYT"
+        }
+
+    ]
