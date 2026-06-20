@@ -11,8 +11,9 @@ def fetch_calendar():
 
     response = requests.get(URL, headers=headers)
 
-    if response.status_code != 200:
-        return None
+    print("STATUS:", response.status_code)
+
+    print(response.text[:5000])
 
     soup = BeautifulSoup(response.text, "lxml")
 
