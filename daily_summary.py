@@ -6,6 +6,9 @@ def generate_summary():
 
     message = "📅 TODAY'S HIGH IMPACT EVENTS\n\n"
 
+    if not events:
+        return "📅 No major events today."
+
     for event in events:
 
         message += (
