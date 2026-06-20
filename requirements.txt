@@ -4,3 +4,4 @@ pandas
 schedule
 ta
 beautifulsoup4
+lxml
