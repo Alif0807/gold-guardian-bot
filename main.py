@@ -1,19 +1,10 @@
-from economic_events import get_events
+from daily_summary import generate_summary
+from scheduler_service import should_send_daily_summary
 from telegram_service import send_message
 
-events = get_events()
+if should_send_daily_summary():
 
-for event in events:
-
-    message = f"""
-{event['impact']} HIGH IMPACT ALERT
-
-{event['country']} {event['name']}
-
-🕒 {event['time']}
-
-⚠️ XAU/USD volatility expected.
-"""
+    message = generate_summary()
 
     send_message(message)
 
