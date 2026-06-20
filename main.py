@@ -1,18 +1,18 @@
-from news_service import get_high_impact_news
+from economic_events import get_events
 from telegram_service import send_message
 
-events = get_high_impact_news()
+events = get_events()
 
 for event in events:
 
     message = f"""
-🔴 HIGH IMPACT ALERT
+{event['impact']} HIGH IMPACT ALERT
 
-{event['country']} {event['event']}
+{event['country']} {event['name']}
 
 🕒 {event['time']}
 
-⚠️ High volatility expected on XAU/USD.
+⚠️ XAU/USD volatility expected.
 """
 
     send_message(message)
